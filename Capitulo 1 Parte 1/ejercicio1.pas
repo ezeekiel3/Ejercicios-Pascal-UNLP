@@ -1,5 +1,4 @@
 program ejercicio1;
-
 var
   numero1, numero2: integer;
 
