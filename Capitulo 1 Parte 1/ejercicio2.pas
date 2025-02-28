@@ -1,6 +1,5 @@
 program ejercicio2;
-var
-    numReal: real;
+var numReal: real;
 begin
     write('ingrese un numero: ');
     readln(numReal);
