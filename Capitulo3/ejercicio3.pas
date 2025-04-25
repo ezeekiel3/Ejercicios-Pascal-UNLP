@@ -18,7 +18,7 @@ procedure RelacionDocenteAlumno(CantDocentes: integer; CantAlumnos: integer; var
 var
     resultado: real;
 begin
-    resultado:= CantAlumnos / CantDocentes
+    resultado:= CantAlumnos / CantDocentes;
     if (resultado > 23.435) then
         Cantidad:= Cantidad + 1;
 end;
@@ -37,19 +37,34 @@ begin
 end;
 var
     EscuelaVar: Escuela;
-    CantidadLeida, Cantidad, Cue, Cue2, i: integer;
+    CantidadLeida, Cantidad, Cue, Cue2: integer;
     MejorEscuela, MejorEscuela2: string;
+    Resultado, Maximo, Maximo2: real;
 begin
     Cue:= 0;
     Cue2:= 0;
     Cantidad:= 0;
     CantidadLeida:= 0;
+    Resultado:= 0;
+    Maximo:= 23.435;
+    Maximo2:= 23.435;
     while (CantidadLeida < 5) do begin
         LeerInfo(EscuelaVar);
         RelacionDocenteAlumno(EscuelaVar.docentes, EscuelaVar.alumnos, Cantidad);
-        if ((Cue = 0) and (EscuelaVar.alumnos / EscuelaVar.docentes < 23.435)) then Cue:= EscuelaVar.cue;
-        if ()
+        Resultado:= EscuelaVar.alumnos / EscuelaVar.docentes;
+        if (Resultado < Maximo) then begin
+            Maximo:= Resultado;
+            MejorEscuela:= EscuelaVar.nombre;
+            Cue:= EscuelaVar.cue;
+        end
+        else if ((Resultado < Maximo2) and (Resultado > Maximo)) then begin
+            Maximo2:= Resultado;
+            MejorEscuela2:= EscuelaVar.nombre;
+            Cue2:= EscuelaVar.cue;
+        end;
+        CantidadLeida:= CantidadLeida + 1;
     end;
-    writeln('Cantidad de escuelas de La Plata con una relación de alumnos por docente superior a la sugerida por UNESCO', Cantidad);
-
+    writeln('Cantidad de escuelas de La Plata con una relación de alumnos por docente superior a la sugerida por UNESCO: ', Cantidad);
+    writeln('Primer escuela con mejor relacion entre docentes y alumnos: ', Cue, ' ', MejorEscuela);
+    writeln('Segunda escuela con mejor relacion entre docentes y alumnos: ', Cue2, ' ', MejorEscuela2);
 end.
