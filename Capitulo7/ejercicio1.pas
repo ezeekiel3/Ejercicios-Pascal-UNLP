@@ -37,23 +37,19 @@ begin
 end;
 procedure borrarDni(var l: lista; dni: string);
 var
-    aux: lista;
-    prev: lista;
-    sig: lista;
-    // ARREGLAR ERROR QUE APARECE ACA
+    actual, anterior: lista;
 begin
-    aux:= l;
-    prev:= aux;
-    sig:= aux;
-    while (aux <> nil) do begin
-        if (aux^.val.dni = dni) then begin
-            sig:= aux^.sig;
-            dispose(aux);
-            prev:= sig^.sig;
-        end;
-        prev:= aux;
-        aux:= aux^.sig;
+    actual:= l;
+    while ((actual <> nil) and (actual^.val.dni <> dni)) do begin
+        anterior:= actual;
+        actual:= actual^.sig;
     end;
+    if (actual <> nil) then
+        if (actual = l) then
+            l:= l^.sig
+        else
+            anterior^.sig:= actual^.sig;
+    Dispose(actual);
 end;
 function dniConMasPares(dni: string): boolean;
 var
