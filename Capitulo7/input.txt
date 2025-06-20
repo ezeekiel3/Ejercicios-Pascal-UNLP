@@ -8,4 +8,29 @@ bolivia
 ensenada
 caseros
 40
+101
+200
+Av. San Martín 123
+Calle Rivadavia 456
+8
+102
+100
+Calle Belgrano 789
+Av. Libertad 321
+4
+103
+200
+Av. San Martín 123
+Av. Alem 777
+10
+104
+300
+Calle Mitre 456
+Calle Saavedra 654
+3
+105
+100
+Calle Belgrano 789
+Av. Corrientes 1200
+7
 0
